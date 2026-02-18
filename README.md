@@ -62,3 +62,27 @@ Create `EXPLANATION.md` (max 250 words) containing:
 ## Submission
 
 - Submit a public GitHub repository URL containing your solution to the Google form link provided.
+
+## How to Run Tests Locally
+
+1. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+2. Run tests:
+```bash
+pytest -v
+```
+
+## How to Run Tests with Docker
+
+1. Build the Docker image:
+```bash
+docker build -t python-assignment .
+```
+
+2. Run tests in container:
+```bash
+docker run python-assignment
+```

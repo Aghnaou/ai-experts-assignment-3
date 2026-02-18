@@ -6,6 +6,8 @@ import requests
 
 from .tokens import OAuth2Token
 
+from datetime import datetime, timezone
+
 
 class Client:
     def __init__(self) -> None:
@@ -29,6 +31,9 @@ class Client:
         if api:
             if not self.oauth2_token or (
                 isinstance(self.oauth2_token, OAuth2Token) and self.oauth2_token.expired
+            )or (
+                isinstance(self.oauth2_token, dict) and 
+                int(datetime.now(tz=timezone.utc).timestamp()) >= self.oauth2_token.get("expires_at", 0)
             ):
                 self.refresh_oauth2()
 
